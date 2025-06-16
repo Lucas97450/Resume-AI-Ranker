@@ -27,10 +27,16 @@ def similarity(cvs_path, jobs_path):
 
 
     vectors_similarity = []
-    
+
     for job in job_vectors:
         for cv in cv_vectors:
             cos_sim = utils.cos_sim(job, cv)
             vectors_similarity.append(cos_sim)
-        print(vectors_similarity)
 
+    results = list(zip(cv_names, vectors_similarity))
+    results_sorted = sorted(results, key=lambda x: x[1], reverse=True)
+
+    for name, score in results_sorted:
+        print(f"{name} : {score:.4f}")
+
+similarity("embedded_files/cvs", "embedded_files/jobs")
