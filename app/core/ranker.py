@@ -3,7 +3,7 @@ from pathlib import Path
 import pickle
 import utils
 
-def similarity(cvs_path, jobs_path):
+def similarity_ranker(cvs_path, jobs_path):
     cvs_folder = Path(cvs_path)
     cvs_files = cvs_folder.glob("*.pkl")
     jobs_folder = Path(jobs_path)
@@ -39,4 +39,4 @@ def similarity(cvs_path, jobs_path):
     for name, score in results_sorted:
         print(f"{name} : {score:.4f}")
 
-similarity("embedded_files/cvs", "embedded_files/jobs")
+similarity_ranker("embedded_files/cvs", "embedded_files/jobs")
