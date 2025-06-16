@@ -1,7 +1,8 @@
+from sentence_transformers import SentenceTransformer
 from pathlib import Path
 import pickle
 
-def embed_all_cvs(folder, save_path="embeddings.pkl"):
+def embed_all_text(folder, save_path):
     # Load a pretrained Sentence Transformer model
     model = SentenceTransformer("all-MiniLM-L6-v2")
     cvs_folder = Path(folder)
@@ -22,5 +23,3 @@ def embed_all_cvs(folder, save_path="embeddings.pkl"):
         pickle.dump(embeddings_dict, f)
     
     return embeddings_dict
-
-embed_all_cvs("parsed_cvs")
